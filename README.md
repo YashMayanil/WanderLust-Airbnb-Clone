@@ -4,18 +4,6 @@
 
 ---
 
-## 🚀 Live Demo
-
-> _Coming soon — deploying on Render_
-
----
-
-## 📸 Screenshots
-
-> _Add screenshots of your app here_
-
----
-
 ## ✨ Features
 
 - 🏠 **Browse Listings** — View all available travel stays on the home page
