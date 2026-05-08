@@ -1,0 +1,179 @@
+<style>
+  .navbar-custom {
+    height: 80px;
+    background-color: white;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    border-bottom: 1px solid #e7e7e7;
+  }
+  
+  .navbar-brand-custom {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #FF385C !important;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  .navbar-brand-custom:hover {
+    color: #FF385C !important;
+  }
+  
+  .nav-link-custom {
+    color: #717171 !important;
+    font-weight: 500;
+    padding: 0.5rem 1rem !important;
+    border-radius: 2rem;
+    transition: all 0.2s ease;
+    margin: 0 0.25rem;
+  }
+  
+  .nav-link-custom:hover {
+    background-color: #f7f7f7;
+    color: #222222 !important;
+  }
+  
+  .search-container {
+    position: relative;
+    margin: 0 2rem;
+  }
+  
+  .search-input-custom {
+    width: 300px;
+    padding: 0.75rem 1rem 0.75rem 2.5rem;
+    border: 1px solid #e7e7e7;
+    border-radius: 2rem;
+    font-size: 0.95rem;
+    background-color: #f7f7f7;
+    transition: all 0.2s ease;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.08);
+  }
+  
+  .search-input-custom:focus {
+    outline: none;
+    border-color: #222222;
+    background-color: white;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    width: 350px;
+  }
+  
+  .search-icon {
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #717171;
+    pointer-events: none;
+  }
+  
+  .btn-host {
+    background-color: transparent;
+    color: #222222;
+    border: 1px solid #222222;
+    border-radius: 2rem;
+    padding: 0.5rem 1.25rem;
+    font-weight: 500;
+    transition: all 0.2s ease;
+  }
+  
+  .btn-host:hover {
+    background-color: #222222;
+    color: white;
+  }
+  
+  .btn-auth {
+    background-color: transparent;
+    color: #222222;
+    border: none;
+    padding: 0.5rem 1rem;
+    font-weight: 600;
+    border-radius: 2rem;
+    transition: all 0.2s ease;
+  }
+  
+  .btn-auth:hover {
+    background-color: #f7f7f7;
+  }
+  
+  .btn-search-custom {
+    background-color: #222222;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 0.5rem;
+    margin-top: 6px;
+    transition: all 0.2s ease;
+  }
+  
+  .btn-search-custom:hover {
+    background-color: #333333;
+    transform: scale(1.05);
+  }
+  
+  .user-menu {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  
+  @media (max-width: 768px) {
+    .search-container {
+      margin: 1rem 0;
+    }
+    .search-input-custom {
+      width: 100%;
+    }
+    .search-input-custom:focus {
+      width: 100%;
+    }
+  }
+</style>
+
+<nav class="navbar navbar-expand-md navbar-custom sticky-top">
+  <div class="container-fluid px-4">
+    <a class="navbar-brand navbar-brand-custom" href="/listings">
+      <i class="fa-solid fa-compass"></i>
+      WanderLust
+    </a>
+    
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav me-auto">
+        <a class="nav-link nav-link-custom" href="/listings">Explore</a>
+      </div>
+      
+      <div class="navbar-nav mx-auto">
+        <div class="search-container">
+          <form action="/listings/search" method="GET" class="d-flex">
+            <input class="form-control search-input-custom" type="search" name="q" placeholder="Search destinations">
+            <button class="btn btn-search-custom" type="submit">
+              <i class="fa-solid fa-magnifying-glass"></i>
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <div class="navbar-nav ms-auto user-menu">
+        <a class="nav-link btn-host" href="/listings/new">Airbnb your home</a>
+        
+        <% if(!currUser){ %>
+          <a class="nav-link btn-auth" href="/signup">Sign up</a>
+          <a class="nav-link btn-auth" href="/login">Log in</a>
+        <% } %>
+        
+        <% if(currUser) { %>
+          <a class="nav-link btn-auth" href="/logout">Log out</a>
+        <% } %>
+      </div>
+    </div>
+  </div>
+</nav>
