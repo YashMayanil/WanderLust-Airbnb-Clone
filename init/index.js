@@ -1,8 +1,9 @@
+require("dotenv").config({ path: require("path").resolve(__dirname, "../.env") });
 const mongoose = require("mongoose");
 const initData = require("./data.js");
 const Listing = require("../models/listing.js");
 
-const MONGO_URL = "mongodb://127.0.0.1:27017/wanderlust";
+const MONGO_URL = process.env.ATLASDB_URL || "mongodb://127.0.0.1:27017/wanderlust";
 
 main()
   .then(() => {
@@ -51,7 +52,6 @@ const initDB = async () => {
 
     return {
       ...obj,
-      owner: "68f0cd7f45d5e0ec3e30c825",
       category: randomCategory,
     };
   });
